@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>测试</title>
+    <script src="angular.min.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+<table ng-app="app" ng-controller='ctrl'>
+    <tr>
+        <td>姓名</td>
+        <td>年龄</td>
+    </tr>
+    <tr ng-repeat="x in comment">
+        <td>{{x.name}}</td>
+        <td>{{x.age}}</td>
+    </tr>
+</table>
+<div id="output">
+
+</div>
+<script language="javascript"type="text/javascript">
+    //		创建模块
+    var app = angular.module('app',[]);
+    //		创建控制器
+    app.controller('ctrl',function($scope){
+//		地址
+        $scope.comment = [];
+        $scope.wsUri = "ws://120.26.68.72:9502"
+//        实例化一个对象并且执行链接
+        $scope.testWebSocket = function () {
+            $scope.websocket = new WebSocket($scope.wsUri);
+            $scope.output = document.getElementById("output");
+            $scope.websocket.onopen = function(evt) {
+                $scope.onOpen(evt)
+            };
+            $scope.websocket.onclose = function(evt) {
+                $scope.onClose(evt)
+            };
+            $scope.websocket.onmessage = function(evt) {
+                $scope.onMessage(evt)
+            };
+            $scope.websocket.onerror = function(evt) {
+                $scope.onError(evt)
+            };
+        }
+        $scope.writeToScreen = function(message) {
+            var pre = document.createElement("p");
+            pre.style.wordWrap = "break-word";
+            pre.innerHTML = message;
+            $scope.output.appendChild(pre);
+        }
+        $scope.doSend = function(message) {
+            $scope.writeToScreen("SENT: " + message);
+            $scope.websocket.send(message);
+        }
+
+        $scope.onOpen = function(evt) {
+            $scope.writeToScreen("CONNECTED");
+            $scope.doSend("WebSocket rocks");
+        }
+        $scope.onClose = function(evt) {
+            $scope.writeToScreen("DISCONNECTED");
+        }
+        $scope.onMessage = function(evt) {
+            $scope.writeToScreen('<span style="color: blue;">RESPONSE: '+ evt.data+'</span>');
+            $scope.comment = [{name:'xiaolin',age:11},{name:'xiaobei',age:11}];
+//            $scope.comment = evt.data;
+
+            $scope.$apply();
+            $scope.websocket.close();
+        }
+        $scope.onError = function(evt) {
+            writeToScreen('<span style="color: red;">ERROR:</span> '+ evt.data);
+        }
+        $scope.testWebSocket();
+    })
+</script>
+</body>
+</html>

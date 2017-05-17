@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="angular.min.js"></script>
+</head>
+<body>
+<table ng-app="app" ng-controller='ctrl'>
+    <tr>
+        <td>1</td>
+        <td>s</td>
+        <td></td>
+        <td></td>
+    </tr>
+</table>
+<script type="text/javascript">
+
+    //    创建模块
+    var app = angular.module('app',[]);
+    //    创建控制器
+    app.controller('ctrl',function($scope){
+        $scope.exampleSocket = new WebSocket("ws://120.26.68.72:9505");
+        $scope.exampleSocket.onopen = function (event) {
+            $scope.exampleSocket.send("11");
+        };
+        $scope.exampleSocket.onmessage = function (event) {
+            console.log(event.data);
+//        JSON.parse(evt.data);
+        }
+    })
+</script>
+
+</body>
+</html>

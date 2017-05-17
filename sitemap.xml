@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset>
+    <url>
+        <loc>http://localhost/xlblog/Index/Index/article/aid/5</loc>
+        <lastmod>2016-09-14</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>http://localhost/xlblog/Index/Index/article/aid/4</loc>
+        <lastmod>2016-09-14</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>http://localhost/xlblog/Index/Index/article/aid/3</loc>
+        <lastmod>2016-09-14</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>http://localhost/xlblog/Index/Index/article/aid/2</loc>
+        <lastmod>2016-09-14</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+</urlset>

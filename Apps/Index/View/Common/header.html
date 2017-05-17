@@ -1,0 +1,60 @@
+<header>
+		  <div id="logo"><a href="{:U('Index/Index/index')}"></a></div>
+		  <nav class="topnav" id="topnav">
+		  	<a href="{:U('Index/Index/index')}" id="topnav_current"><span>首页</span></a>
+		  	<foreach name="data" item="v">
+		  		<a href="{:U('Index/Index/new_list',array('cid'=>$v['cid']))}"><span>{$v['cname']}</span></a>
+		  	</foreach>
+		  	<a href="{:U('Index/Index/about')}"><span>关于我</span></a>
+		  	<!--<a href="newlist.html"><span>开源项目</span></a>-->
+		  	<!--<a href="newlist.html"><span>慢生活</span></a>-->
+		  	<!--<a href="moodlist.html"><span>碎言碎语</span></a>-->
+		  	<!--<a href="share.html"><span>模板分享</span></a>-->
+		  	<!--<a href="knowledge.html"><span>学无止境</span></a>-->
+		  	<!--<a href="book.html"><span>留言版</span></a>-->
+		  </nav>
+	      <div class="login">
+			  <empty name="Think.session.users.head_img">
+				  <a href="javascript:;" onclick="login()">登陆</a>
+			  <else />
+				  <div class="headPortrait">
+					  <img src="{$Think.session.users.head_img}" />
+
+					  <div class="login_right">
+						  <span class="username">{$Think.session.users.nickname}</span>
+						  <a href="javascript:;" onclick="logout()">退出</a>
+					  </div>
+
+
+
+				  </div>
+			  </empty>
+
+		  </div>
+
+		</header>
+		<!-- 登录模态框开始 -->
+		<div class="modal fade" id="b-modal-login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content row">
+					<div class="col-xs-12 col-md-12 col-lg-12">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							<h4 class="modal-title b-ta-center" id="myModalLabel">无需注册，用以下帐号即可直接登录</h4>
+						</div>
+					</div>
+					<div class="col-xs-12 col-md-12 col-lg-12 b-login-row">
+						<ul class="row">
+							<li class="col-xs-6 col-md-4 col-lg-4 b-login-img">
+								<a href="{:U('Index/User/oauth_login',array('type'=>'qq'))}"><img src="__HOME_IMAGE__/qq-login.png" alt="QQ登录" title="QQ登录"></a>
+							</li>
+
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 登录模态框结束 -->
+		<!-- 引入bootstrjs部分开始 -->
+		<bootstrapjs_index />
+		<!-- 引入bootstrjs部分结束 -->

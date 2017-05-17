@@ -1,0 +1,433 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
+<head>
+<title>清华同方</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<link rel="stylesheet" type="text/css" href="../css/stylesheet.css" />
+<script type="text/javascript" src="../js/mootools.js"></script>
+<script type="text/javascript" src="../js/elements.js"></script>
+<script type="text/javascript" src="../js/highslide/highslide.js"></script>
+<script type="text/javascript">
+    hs.graphicsDir = 'templates/xtc4/lib/js/highslide/graphics/';
+	hs.outlineType = 'rounded-white';
+    hs.captionEval = 'this.thumb.title';
+</script>
+<script type="text/javascript" src="../js/cookies.js"></script>
+<script type="text/javascript" src="../js/efa_fontsize.js"></script>
+<script type="text/javascript" src="../js/accordion.js"></script>
+<script type="text/javascript" src="../js/AJS.js"></script>
+<script type="text/javascript" src="../js/AJS_fx.js"></script>
+<script type="text/javascript" src="../js/gb_scripts.js"></script>
+<link rel="stylesheet" type="text/css" href="../css/gb_styles.css" />
+<script type="text/javascript"><!--
+var selected;
+var submitter = null;
+
+function submitFunction() {
+    submitter = 1;
+}
+function popupWindow(url) {
+  window.open(url,'popupWindow','toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,copyhistory=no,width=100,height=100,screenX=150,screenY=150,top=150,left=150')
+}  
+
+function selectRowEffect(object, buttonSelect) {
+  if (!selected) {
+    if (document.getElementById) {
+      selected = document.getElementById('defaultSelected');
+    } else {
+      selected = document.all['defaultSelected'];
+    }
+  }
+
+  if (selected) selected.className = 'moduleRow';
+  object.className = 'moduleRowSelected';
+  selected = object;
+
+// one button is not an array
+  if (document.getElementById('payment'[0])) {
+    document.getElementById('payment'[buttonSelect]).checked=true;
+  } else {
+    //document.getElementById('payment'[selected]).checked=true;
+  }
+}
+
+function rowOverEffect(object) {
+  if (object.className == 'moduleRow') object.className = 'moduleRowOver';
+}
+
+function rowOutEffect(object) {
+  if (object.className == 'moduleRowOver') object.className = 'moduleRow';
+}
+
+function popupImageWindow(url) {
+  window.open(url,'popupImageWindow','toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=no,resizable=yes,copyhistory=no,width=100,height=100,screenX=150,screenY=150,top=150,left=150')
+}
+function textCounter(field,counter,maxlimit,linecounter) {
+	// text width//
+	var fieldWidth =  parseInt(field.offsetWidth);
+	var charcnt = field.value.length;        
+	// trim the extra text
+	if (charcnt > maxlimit) { 
+		field.value = field.value.substring(0, maxlimit);
+	} else { 
+	var percentage = parseInt(100 - (( maxlimit - charcnt) * 100)/maxlimit) ;
+	document.getElementById(counter).style.width =  parseInt((fieldWidth*percentage)/100)+"px";
+	document.getElementById(counter).innerHTML="Limit: "+percentage+"%"
+	setcolor(document.getElementById(counter),percentage,"background-color");
+	}
+}
+function setcolor(obj,percentage,prop){
+	obj.style[prop] = "rgb(80%,"+(100-percentage)+"%,"+(100-percentage)+"%)";
+}
+
+//--></script>
+<script type="text/javascript"><!--
+function getXmlHttpRequestObject() {
+	if (window.XMLHttpRequest) {
+		return new XMLHttpRequest();
+	} else if(window.ActiveXObject) {
+		return new ActiveXObject("Microsoft.XMLHTTP");
+	} else {
+		alert("......");
+	}
+}
+
+var searchReq = getXmlHttpRequestObject();
+
+//Called from keyup on the search textbox.
+//Starts the AJAX request.
+function searchSuggest() {
+	if (searchReq.readyState == 4 || searchReq.readyState == 0) {
+		var str = escape(document.getElementById('txtSearch').value);
+		searchReq.open("GET", 'searchSuggest.php?search=' + str, true);
+		searchReq.onreadystatechange = handleSearchSuggest; 
+		searchReq.send(null);
+	}		
+}
+
+//Called when the AJAX response is returned.
+function handleSearchSuggest() {
+	if (searchReq.readyState == 4) {
+		var ss = document.getElementById('search_suggest')
+		ss.innerHTML = '';
+		var str = searchReq.responseText.split("\n");
+		for(i=0; i < str.length - 1; i++) {
+			//Build our element string.  This is cleaner using the DOM, but
+			//IE doesn't support dynamically added attributes.
+			var suggest = '<div class="search_suggest_inner"><div onmouseover="javascript:suggestOver(this);" ';
+			suggest += 'onmouseover="javascript:suggestOverClose(this);" ';
+			suggest += 'onmouseout="javascript:suggestOut(this);" ';
+			suggest += 'onmouseout="javascript:suggestOutClose(this);" ';
+			suggest += 'onclick="javascript:setSearch(this.innerHTML);" ';
+			suggest += 'class="suggest_link">' + str[i] + '<\/div><\/div>';
+			ss.innerHTML += suggest;
+		}
+		if (i==0) {
+			ss.style.visibility  = "hidden";
+		} else {
+			ss.style.visibility  = "visible";
+		}
+		//Schließen link einfügen
+		ss.innerHTML += '<div class="closeContainer"><a onmouseover="javascript:suggestOverClose(this);" onmouseout="javascript:suggestOutClose(this);" onClick="javascript:suggestClose(this);" class="closeLink">Fenster schließen<\/a><\/div>';
+	}
+}
+// Close Function
+function suggestClose (div_value) {
+	document.getElementById('search_suggest').innerHTML = '';
+	document.getElementById('search_suggest').style.visibility  = "hidden";
+}
+
+//Mouse over function
+function suggestOver(div_value) {
+	div_value.className = 'suggest_link_over';
+}
+function suggestOverClose(div_value) {
+	div_value.className = 'suggest_link_close';
+}
+//Mouse out function
+function suggestOut(div_value) {
+	div_value.className = 'suggest_link';
+}
+function suggestOutClose(div_value) {
+	div_value.className = 'suggest_link_close';
+}
+//Click function
+function setSearch(value) {
+	// HTML-TAGS entfernen
+  	var newvalue = value.replace(/<.*?>/gi, '');
+	//Kategorienamen entfernen (fängt mit &nbsp; an)
+	var Suche =	newvalue.indexOf("&nbsp;");
+	var produktname = newvalue.substring(0,Suche);
+	document.getElementById('txtSearch').value = produktname;
+	document.getElementById('search_suggest').innerHTML = '';
+	document.getElementById('search_suggest').style.visibility  = "hidden";
+	//zum Suchergebnis weiterleiten
+//	top.location.href = "http://www.xt-module.de/neushop/advanced_search_result.php?keywords=" + produktname; 
+	top.location.href = "/advanced_search_result.php?keywords=" + produktname; 
+}
+/* End Suggest Code */	
+
+function openInfoWindow(URL,Name,features) { 
+  window.open(URL,Name,features);
+}
+
+function updatePasswordMeter(password) {
+  var strength_descriptions = new Array();
+  strength_descriptions[0] = 'sehr unsicher';
+  strength_descriptions[1] = 'unsicher';
+  strength_descriptions[2] = 'gut';
+  strength_descriptions[3] = 'sehr gut';
+  strength_descriptions[4] = 'sicher';
+  strength_descriptions[5] = 'sehr sicher';
+
+  var strength = calculatePasswordStrength(password);
+
+  document.getElementById('password_strength_label').innerHTML = strength_descriptions[strength];
+  document.getElementById('password_bar').className = 'strength_' + strength;
+}
+
+function calculatePasswordStrength(password) {
+  var score = 0;
+
+  // Length at least 8 chars long
+  if (password.length >= 8)
+    score++;
+
+  // both lower and uppercase chars
+  if (password.match(/[a-z]/) && password.match(/[A-Z]/))
+    score++;
+
+  // at least one num char
+  if (password.match(/[0-9]+/))
+    score++;
+
+  // at least one special char
+  if (password.match(/.[!,@,#,$,%,^,&,*,?,_,~,-,(,)-]/))
+    score++;
+
+  // Length at least 12 chars long
+  if (password.length >= 12)
+    score++;
+
+  return score;
+}
+
+//--></script>
+<script type="text/javascript" src="../js/validate/date-de-DE.js"></script>
+<script type="text/javascript" src="../js/validate/validate.js"></script>
+</head>
+<body>
+<script type="text/javascript">
+	//<![CDATA[
+	if (efa_fontSize06) efa_fontSize06.efaInit();
+	//]]>
+</script>
+<div id="pageWrapHead"></div>
+<div id="pageWrapTop">
+  <div id="pageWrapBottom">
+    <div id="pageBorderTop">
+      <h1 style="display:none;">虚拟主机 服务器租用 服务器技术 国外服务器</h1>
+      <img src="../img/star.gif" id="star" alt="" /> <a href="index.html"><img src="../img/spacer.gif" alt="" style="width:240px; height:90px; position:absolute; margin:30px 0 0 20px; z-index:2000;" /></a>
+      <div id="quickLinks">
+        <ul>
+          <li><a href="../index.htm">首页</a></li>
+          <li><a href="zhuche.htm">注册</a></li>
+          <li><a href="dengru.htm"><strong>登入</strong></a></li>
+          <li><a href="#">帮助</a></li>
+        </ul>
+      </div>
+      <div id="cartLink"><img src="../img/cart.gif" alt="0" /> <a href="#">购物车 <strong>(0)</strong></a></div>
+    </div>
+    <div id="pageBorderLR">
+      <div id="pageBorderBottom">
+        <div id="page">
+          <div id="topNavi">
+          <ul id="kwicks">
+             <li><a class="kwick module" href="Shop-Design.htm"><span>台式机<br />
+                品牌机，兼容机</span></a></li>
+              <li><a class="kwick design" href="Shop-bijiben.htm"><span>笔记本<br />
+                超低价笔记本</span></a></li>
+              <li><a class="kwick service" href="Shop-Service.htm"><span>服务器<br />
+                质量保证</span></a></li>
+              <li><a class="kwick cms" href="../Shop-peijian.htm"><span>周边配件<br />
+                鼠标，键盘，耳机</span></a></li>
+            </ul>
+          </div>
+          <div id="breadCrumb"><a href="../index.htm" class="headerNavigation">首页</a> &raquo; <a href="qinghuatongfang.htm" class="headerNavigation">清华同方</a >
+            <div id="searchContainer">
+              <div class="sd"><a href="IBM.htm">搜索</a></div>
+              <a href="IBM.htm">
+              <input type="text" name="keywords" id="txtSearch" onkeyup="searchSuggest();" />
+              </a>
+              <div id="search_suggest"></div>
+              <a href="IBM.htm">
+              <input type="image" src="../img/searchContainerButton.png" alt="搜索" title="搜索" id="go" />
+              </a></div>
+          </div>
+          <div id="content" class="clear">
+            <div id="leftCol">
+              <div class="box"> <img src="../img/boxIconVorteile.gif" style="position:absolute; margin:-5px 0 0 -8px;" alt="" />
+                <div style="background:url(../img/boxHeaderVorteile.jpg) no-repeat; padding-bottom:5px;"> <span class="boxHead">清华同方</span> </div>
+                <img src="../img/67.gif" width="160" height="200" />
+                <div class="boxContent">
+                  <ul>
+                  
+                  </ul>
+                </div>
+              </div>
+              <div class="box"> <img src="../img/boxIconFav.gif" style="position:absolute; margin:-12px 0 0 -8px;" alt="" />
+                <div style="background:url(../img/boxHeaderVorteile.jpg) no-repeat; padding-bottom:5px;"> <span class="boxHead">本站新闻</span> </div>
+                <div class="boxContent">
+                  <ul>
+                    <li style="background:url(../img/dottedBorder1.gif) bottom repeat-x; line-height:14px; padding:6px 0;">2011市场鏖战 清华同方电视科技从容亮剑 
+<a href="#">详细...</a></li>
+                    <li style="background:url(../img/dottedBorder1.gif) bottom repeat-x; line-height:14px; padding:6px 0;">寓教于乐 清华同方电视暑假热销 
+  <a href="#">详细...</a></li>
+                    <li style="background:url(../img/dottedBorder1.gif) bottom repeat-x; line-height:14px; padding:6px 0;">沈阳清华同方 K41H-i2412514仅3799元  <a href="#">详细...</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div style="background:url(../img/greenBox_01.gif) no-repeat; height:28px; padding-top:5px; margin-top:30px;"><img src="../img/boxIconMail.gif" alt="" style="position:absolute; margin:-15px 0 0 -9px;" /> <span class="greenBoxHead">联系客服</span></div>
+              <div style="background:url(../img/greenBox_02.gif) no-repeat top #ddefb5  ; padding:5px 10px; height:173px; font-size:12px; font-weight:normal; line-height:16px;"> 
+                <p><strong>你遇到什什么困难吗？ </strong><br />
+                  如果你遇到什么问题请联系我们客服……<br />
+                  <br />
+                  <strong>联系方式;</strong><br />
+                  客服电话：62880246<br />
+				      电话：158****0931<br />
+                  <br />
+                  如有需要，请发邮件给我们<br />
+                  <span style="font-size:10px;">(发邮件时说明一定要详细哦)</span><br />
+                  E-Mail: <a href="mailto:462441355@qq.com">462441355@qq.com</a> </p>
+              </div>
+              <div style="background:url(../img/greenBox_03.gif) no-repeat top; height:9px; margin-bottom:40px;"></div>
+            </div>
+            <div id="rightCol">
+              <div id="rightColInner">
+                <div class="h1bg">
+                  <h3>清华同方</h3>
+                </div>
+                <div style="width:610px; padding-top:30px;" class="float">
+                  <div class="NPBox mr10">
+                    <div class="NPBoxImg"> <a href="#" title="清华同方 K41H-I2312501锋锐K笔记本一年包换无亮点全新正品  "><img src="../img/87.jpg" width="95" height="90" /></a> </div>
+                    <a href="#" class="productsLink">清华同方 K41H-I2312501锋锐K笔记本一年包换无亮点全新正品 </a>
+                    <div class="priceContainer"> <span class="ab">RMB:</span>3999元<br />
+                      <span class="tax">运费：10元 </span><br />
+                      </small>
+					</div>
+                    <a href="#"><img src="../img/button_buy_now.gif" alt="加入购物车" /></a>
+				  </div>
+                  <div class="NPBox mr10">
+                    <div class="NPBoxImg"> <a href="#" title="【清华同方锋锐K系列K41H-i2412514笔记本一年包换全无亮点全新正品  "><img src="../img/88.jpg" width="95" height="90" /></a> </div>
+                    <a href="#" class="productsLink">清华同方锋锐K系列K41H-i2412514笔记本一年包换全无亮点全新正品   </a>
+                    <div class="priceContainer"><span class="ab">RMB:</span>3999元<br />
+                      <span class="tax">运费：10元 </span><br />
+                      </small>
+				    </div>
+                    <a href="#"><img src="../img/button_buy_now.gif" alt="加入购物车" /></a> </div>
+                  <div class="NPBox">
+                    <div class="NPBoxImg"> <a href="#" title="清华同方 K463\K46C 暑期热卖中 1G独显包邮 4号-7号 四天特价  "><img src="../img/89.jpg" width="95" height="90" /></a> </div>
+                    <a href="#" class="productsLink">清华同方 K463\K46C 暑期热卖中 1G独显包邮 4号-7号 四天特价  </a>
+                    <div class="priceContainer"><span class="ab">RMB:</span>2549元<br />
+                    <span class="tax">运费：0元 </span><br />
+                      </small>
+                    </div>
+                    <a href="#"><img src="../img/button_buy_now.gif" alt="加入购物车" /></a> </div>
+                </div>
+                <div style="width:610px; padding-top:30px;" class="float">
+                  <div class="NPBox mr10">
+                    <div class="NPBoxImg"> <a href="#" title="清华同方 锋锐K系列 K46C-P6202313 4号-7号 四天特价 包邮+礼品  "><img src="../img/90.jpg" width="95" height="90" /></a> </div>
+                    <a href="#" class="productsLink">清华同方 锋锐K系列 K46C-P6202313 4号-7号 四天特价 包邮+礼品  </a>
+                    <div class="priceContainer"><span class="ab">RMB:</span>2549元<br />
+                     <span class="tax">运费：10元 </span><br />
+                      </small></div>
+                    <a href="#"><img src="../img/button_buy_now.gif" alt="加入购物车" /></a> </div>
+                  <div class="NPBox mr10">
+                    <div class="NPBoxImg"> <a href="#" title="清华同方 锋锐V系列 V46C-P6202302 现货销售/一年保换/包顺丰  "><img src="../img/91.jpg" width="95" height="90" /></a> </div>
+                    <a href="#" class="productsLink">清华同方 锋锐V系列 V46C-P6202302 现货销售/一年保换/包顺丰  </a>
+                     <div class="priceContainer"><span class="ab">RMB:</span>2919元<br />
+                     <span class="tax">运费：10元 </span><br />
+                      </small></div>
+                    <a href="#"><img src="../img/button_buy_now.gif" alt="加入购物车" /></a> </div>
+                  <div class="NPBox">
+                    <div class="NPBoxImg"> <a href="#" title="清华同方 K46C-P6202313 包顺丰快递P6123B07升级版  "><img src="../img/92.jpg" width="95" height="90" /></a> </div>
+                    <a href="#" class="productsLink">清华同方 K46C-P6202313 包顺丰快递P6123B07升级版  </a>
+                      <div class="priceContainer"><span class="ab">RMB:</span>3070元<br />
+               <span class="tax">运费：10元 </span><br />
+                      </small></div>
+                    <a href="#"><img src="../img/button_buy_now.gif" alt="加入购物车" /></a> </div>
+                </div>
+                <div style="width:610px; padding-top:30px;" class="float"> </div>
+              </div>
+            </div>
+          </div>
+          <div style="padding:0 0px; margin-top:30px;"> 
+		  	<img src="../img/beliebtesteSuchbegriffe.gif" alt="beliebteste Suchbegriffe" /><br />
+           <span class="tCCTag1"><a href="IBM.htm">IBM</a></span> 
+			<span class="tCCTag3"><a href="DELL.htm">DELL(戴尔)</a></span> 
+			<span class="tCCTag5"><a href="HP.htm">HP(惠普)</a></span> 
+			<span class="tCCTag2"><a href="lenovo.htm">lenovo(联想)</a></span> 
+			<span class="tCCTag5"><a href="langchao.htm">浪潮</a></span> 
+			<span class="tCCTag3"><a href="langchao.htm">ASUS(华硕)</a></span> 
+			<span class="tCCTag4"><a href="sun.htm">Sun</a></span> 
+			<span class="tCCTag3"><a href="Oxygen.htm">Oxygen(强氧)</a></span> 
+			<span class="tCCTag5"><a href="Founder.htm">Founder(方正)</a></span> 
+			<span class="tCCTag3"><a href="Tigerpower.htm">TigerPower</a></span> 
+			<span class="tCCTag4"><a href="qinghuatongfang.htm">清华同方</a></span> 
+			<span class="tCCTag1"><a href="apple.htm">Apple（苹果）</a></span> 
+			<span class="tCCTag4"><a href="great.htm">Great Wall（长城）</a></span> 
+			<span class="tCCTag4"><a href="Dawning.htm">Dawning（曙光）</a></span> 
+			<span class="tCCTag5"><a href="Powerleader.htm">PowerLeader（宝德）</a></span> </div>
+        </div>
+      </div>
+    </div>
+    <div id="pageFooter">
+      <div id="footerLinks" class="float">
+        <div class="footerContainer">
+          <ul>
+            <li><a href="../index.htm">首页</a></li>
+            <li><a href="Shop-Design.htm">台式机</a></li>
+            <li><a href="Shop-bijiben.htm">笔记本</a></li>
+            <li><a href="Shop-Service.htm">服务器</a></li>
+            <li><a href="Shop-peijian.htm">电脑配件</a></li>
+          </ul>
+        </div>
+        <div class="footerContainer">
+          <ul>
+          <li><a href="shumashexiangji.htm">数码相机</a></li>
+            <li><a href="shouji.htm">手机</a></li>
+            <li><a href="Mp3.htm">MP3 / MP4</a></li>
+            <li><a href="DIYyingjian.htm">DIY硬件</a></li>
+            <li><a href="#">软件</a></li>
+          </ul>
+        </div>
+        <div class="footerContainer">
+          <ul>
+            <li><a href="#"><img src="../img/socialIcons/rss.gif" alt="RSS-Feed"/> 免费新闻</a></li>
+            <li><a href="#">关于我们</a></li>
+            <li><a href="#">招聘信息</a></li>
+            <li><a href="#">合作渠道</a></li>
+            <li><a href="mailto:462441355@qq.com">联系我们</a></li>
+          </ul>
+        </div>
+                 <div class="footerContainerCopyright">兵兵通讯网 <a href="#"> 全面攒机网</a> .
+                 <div class="footerContainerSocial"> 
+          <a rel="nofollow" style="text-decoration:none;" href="#" ><img src="../img/socialIcons/digg.png" /></a> 
+          
+          <a rel="nofollow" style="text-decoration:none;" href="#" ><img src="../img/socialIcons/delicious.png"  style="margin-left:5px;" /></a> 
+          <a rel="nofollow" style="text-decoration:none;" href="#" ><img src="../img/socialIcons/technorati.png" style="margin-left:5px;"/></a> 
+          
+          <a rel="nofollow" style="text-decoration:none;" href="#" ><img src="../img/socialIcons/wong.png" style="margin-left:5px;" /></a>       
+         
+          
+          <a rel="nofollow" style="text-decoration:none;" href="#" ><img src="../img/socialIcons/google.png" style="margin-left:5px;" /></a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="copyright">版权所有: <a href="#" target="_blank">林宫兵</a></div>
+<div class="copyright">学校: <a href="#" target="_blank">永嘉职中</a></div>
+</body>
+</html>

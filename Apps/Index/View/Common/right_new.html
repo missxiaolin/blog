@@ -1,0 +1,21 @@
+<h3>
+		      <p>置顶<span>文章</span></p>
+		    </h3>
+		    <ul class="rank">
+		    	<foreach name="recommend" item="v">
+		    		<li>
+		    			<a href="{:U('Index/Index/content',array('aid'=>$v['aid']))}" title="{$v['title']}" target="_blank">{$v['title']}</a>
+		    		</li>
+		    	</foreach>
+		    </ul>
+		    <h3 class="ph">
+		      <p>点击<span>排行</span></p>
+		    </h3>
+		    <ul class="paih">
+		    	<foreach name="clickArticle" item="v">
+		    		<li>
+		    			<a href="{:U('Index/Index/content',array('aid'=>$v['aid']))}" title="{$v['title']}" target="_blank">{$v['title']}</a>
+		    		</li>
+		    	</foreach>
+		    </ul>
+		    

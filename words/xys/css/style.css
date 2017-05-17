@@ -1,0 +1,452 @@
+/*字体*/
+@font-face {font-family: "iconfont";
+  src: url('../font/iconfont.eot?t=1473999025'); /* IE9*/
+  src: url('../font/iconfont.eot?t=1473999025#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('../font/iconfont.woff?t=1473999025') format('woff'), /* chrome, firefox */
+  url('../font/iconfont.ttf?t=1473999025') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('../font/iconfont.svg?t=1473999025#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.iconfont {
+  font-family:"iconfont" !important;
+  font-size:16px;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale;
+}
+/*其他样式*/
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+	background-color: #EBEBEB;
+}
+a{
+	text-decoration: none;
+}
+header{
+	padding-top: 62px;
+	padding-bottom: 62px;
+	background: url(../images/bg.jpg) no-repeat center 20%;
+	background-size: cover;
+}
+header .container{
+	padding: 15px;
+	margin-right: auto;
+	margin-left: auto;
+}
+header .container img{
+	display: block;
+	margin: 0 auto;
+}
+nav{
+	width: 100%;
+	text-align: center;
+	background-color: #FFFFFF;
+	border-top: 1px solid #ebebeb;
+	margin-bottom: 35px;
+	border-bottom: 2px solid #e1e1e1;
+}
+nav .navbar{
+	width: 100%;
+	display: none;
+}
+nav .navbar .la{
+	text-align: center;
+	margin: 0 auto;
+	font-size: 2em;
+	cursor: pointer;
+	height: 56px;
+	display: inline-block;
+	line-height: 2em;
+	color: #505050;
+}
+
+nav ul{
+	width: 100%;
+	margin: 0 auto;
+	display: block;
+}
+nav ul li{
+	list-style: none;
+	display: inline-block;
+	position: relative;
+}
+nav ul .active{
+	margin-bottom: -2px;
+	border-bottom: 2px solid #e67e22;
+}
+nav ul li a{
+	color: #505050;
+	line-height: 4em;
+	display: block;
+	padding: 0 21px;
+}
+nav ul li a:hover{
+	color: #E67E22;
+}
+
+
+#main{
+	width: 1170px;
+	margin: 0 auto;
+	height: auto;
+	overflow: hidden;
+}
+#main main{
+	width: 63%;
+	float: left;
+}
+#main main article{
+	width: 100%;
+	background-color: #FFFFFF;
+	box-sizing: border-box;
+	padding: 35px;
+	margin-bottom: 35px;
+}
+#main main article .post_head{
+	text-align: center;
+}
+#main main article .post_head .post_title{
+	font-size: 2em;
+	line-height: 1.5em;
+	font-weight: 400;
+	color: #303030;
+}
+#main main article .post_head .post_meta{
+	line-height: 1.75em;
+	font-family: "Helvetica Neue", Helvetica, Arial, "Hiragino Sans GB", "Hiragino Sans GB W3", "WenQuanYi Micro Hei", "Microsoft YaHei UI", "Microsoft YaHei", sans-serif;
+}
+#main main article .post_head .post_meta span a{
+	color: #e67e22;
+}
+#main main article .post_head .post_meta time{
+	margin-left: 5px;
+	color: #959595;
+}
+#main main article .post_content{
+	margin: 30px 0;
+	box-sizing: border-box;
+	text-indent: 2em;
+}
+#main main article .post_permalink a{
+	border: 1px solid #e67e22;
+	background-color: #e67e22;
+	color: #FFFFFF;
+	padding: 7px 14px;
+	border-radius: 2px;
+	font-size: 14px;
+	transition: all 0.2s ease-in-out;
+}
+#main main article .post_permalink a:hover{
+	background-color: #303030;
+	border: transparent 1px solid;
+}
+#main main article footer{
+	margin-top: 30px;
+	border-top: 1px solid #ebebeb;
+	box-sizing: border-box;
+}
+#main main article footer .fl{
+	color: #959595;
+	line-height: 28px;
+	margin-top: 30px;
+}
+/*内容右边开始*/
+#main aside{
+	width: 35%;
+	float: right;
+}
+#main aside .widget{
+	background-color: #FFFFFF;
+	padding: 21px 30px;
+	box-sizing: border-box;
+	margin-bottom: 35px;
+}
+#main aside .widget .title{
+	position: relative;
+	margin-top: 0px;
+	padding-bottom: 7px;
+	border-bottom: 1px solid #ebebeb;
+	margin-bottom: 21px;
+}
+#main aside .widget .title::before{
+	content: "";
+	width: 90px;
+	height: 1px;
+	background-color: #e67e22;
+	position: absolute;
+	left: 0px;
+	bottom: -1px;
+}
+#main aside .widget .content{
+	color: #505050;
+	font-size: 0.9em;
+	line-height: 1.7em;
+}
+#main aside .widget .content p{
+	margin: 0 0 10px;
+}
+#main aside .widget .content p i{
+	margin-right: 5px;
+}
+#main aside .widget .content p a{
+	color: #e67e22;
+}
+#main aside .widget .content .btn{
+	border: 1px solid #e67e22;
+	background-color: #e67e22;
+	color: #FFFFFF;
+	transition: all 0.2s ease-in-out;
+	width: 100%;
+	line-height: 2.5em;
+	font-size: 14px;
+	text-align: center;
+	display: block;
+	vertical-align: middle;
+	white-space: nowrap;
+	border-radius: 2px;
+}
+#main aside .widget .tag_cloud a{
+	border: 1px solid #ebebeb;
+	padding: 2px 7px;
+	color: #959595;
+	line-height: 1.5em;
+	display: inline-block;
+	margin: 0 7px 7px 0;
+	transition: all 0.2s ease;
+	font-size: 14px;
+}
+#main aside .widget .tag_cloud a:hover{
+	border: solid 1px #E67E22;
+	background-color: #E67E22;
+	color: #FFFFFF;
+}
+
+/*旋转图片*/
+#main aside #cir{
+	background-color: #FFFFFF;
+	height: 155px;
+	box-sizing: border-box;
+	margin-bottom: 35px;
+	position: relative;
+}
+#main aside #cir i{
+	display: block;
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	position: absolute;
+	left: 5px;
+	top: 5px;
+	text-align: center;
+	line-height: 50px;
+	font-size: 12px;
+	background-color: #FFFFFF;
+	cursor: pointer;
+	border: solid 1px #EBE9E7;
+}
+#main aside #cir section{
+	display: block;
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	position: absolute;
+	left: 5px;
+	top: 5px;
+	text-align: center;
+	line-height: 50px;
+	font-size: 12px;
+}
+
+
+
+
+
+.footer{
+	background-color: #202020;
+	padding: 35px 0 0;
+	color: #959595;
+}
+.footer .container{
+	width: 1170px;
+	margin: 0 auto;
+	box-sizing: border-box;
+	overflow: hidden;
+}
+.footer .container .sm{
+	float: left;
+	width: 33%;
+}
+.footer .container .sm .widget{
+	padding: 0px 30px;
+	box-sizing: border-box;
+	margin-bottom: 35px;
+}
+.footer .container .sm .widget .title{
+	position: relative;
+	margin-top: 0px;
+	padding-bottom: 7px;
+	border-bottom: 1px solid #303030;
+	margin-bottom: 21px;
+	color: #FFFFFF;
+}
+.footer .container .sm .widget .title::before{
+	content: "";
+	width: 90px;
+	height: 1px;
+	background-color: #e67e22;
+	position: absolute;
+	left: 0px;
+	bottom: -1px;
+}
+.footer .container .sm .widget .content .recent_single_post{
+	border-bottom: 1px dashed #303030;
+	padding-bottom: 14px;
+	margin-bottom: 14px;
+	box-sizing: border-box;
+	font-size: 14px;
+}
+.footer .container .sm .widget .content .recent_single_post a{
+	color: #959595;
+	line-height: 1.75em;
+	transition: all 0.2s ease;
+}
+.footer .container .sm .widget .content .recent_single_post a:hover{
+	color: #E67E22;
+	text-decoration: underline;
+}
+.footer .container .sm .widget .content .recent_single_post .date{
+	color: #505050;
+}
+.footer .container .sm .widget .tag_cloud a{
+	border: 1px solid #303030;
+	padding: 2px 7px;
+	color: #8D9195;
+	line-height: 1.5em;
+	display: inline-block;
+	margin: 0 7px 7px 0;
+	transition: all 0.2s ease;
+	font-size: 14px;
+}
+.footer .container .sm .widget .tag_cloud a:hover{
+	border: solid 1px #E67E22;
+	background-color: #E67E22;
+	color: #FFFFFF;
+}
+.footer .container .sm .widget .friend_links a{
+	border: solid 1px transparent;
+}
+hr{
+	border: none;
+}
+.footer .container .sm .widget .friend_links hr{
+	margin: 1em 0;
+	border-top: 1px dashed #303030;
+}
+
+.copyright{
+	width: 100%;
+	font-size: 0.9em;
+	box-sizing: border-box;
+	padding: 30px 10px;
+	background: #111111;
+	color: white;
+	text-align: center;
+}
+
+
+
+
+
+
+
+
+
+@media only screen and (min-width: 651px) {
+	nav ul{
+		display: block;
+	}
+	
+	
+}
+
+@media only screen and (max-width: 650px) {
+	/*导航部分*/
+	nav .navbar{
+		display: block;
+	}
+	nav ul{
+		display: none;
+	}
+	nav ul li{
+		display: block;
+		text-align: left;
+	}
+	
+	
+	
+	
+}
+@media only screen and (max-width: 1185px) {
+	#main{
+		width: 970px;
+	}
+	.footer .container{
+		width: 970px;
+	}
+	
+	
+}
+@media only screen and (max-width: 985px) {
+	#main{
+		width: 100%;
+	}
+	#main main{
+		width: 80%;
+		margin: 0 auto;
+		float: none;
+	}	
+	#main aside{
+		width: 80%;
+		margin: 0 auto;
+		float: none;
+	}
+	.footer .container{
+		width: 100%;
+	}
+}
+@media only screen and (max-width: 768px) {
+	#main{
+		width: 750px;
+	}
+	
+	
+	
+	
+}
+@media only screen and (max-width: 750px) {
+	#main{
+		width: auto;
+	}
+	
+	
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

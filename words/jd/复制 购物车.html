@@ -1,0 +1,163 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>购物车</title>
+		<link rel="stylesheet" type="text/css" href="css/index.css"/>
+		<link rel="stylesheet" type="text/css" href="css/man.css"/>
+		<link rel="stylesheet" type="text/css" href="css/login.css"/>
+		<link rel="stylesheet" type="text/css" href="css/shop.css"/>
+		<!--AngularJS-->
+		<script src="js/angular.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jquery-1.7.2.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/top.js" type="text/javascript" charset="utf-8"></script>
+		<!--点击增加-->
+		<!--<script src="js/enlarge.js" type="text/javascript" charset="utf-8"></script>-->
+	</head>
+	<body>
+		<!--个人中心开始-->
+		<div id="login_top">
+			<a href="index.html"><img src="images/login/login.png"/></a>
+			<b class="man">购物车</b>
+		</div>
+		<div id="main" ng-app="app" ng-controller="shop_num">
+			<!--top-->
+			<div class="all">
+				<div class="midd">
+					<em>全部商品</em><span>3</span>
+				</div>
+			</div>
+			<!--内容-->
+			<div class="cart_warp">
+				<div class="shop_top">
+					<!--全部勾选商品-->
+					<div class="one">
+						<input type="checkbox" name="" class="che" id="" value="" />
+						全选
+					</div>
+					<div class="two">
+						商品
+					</div>
+					<div class="three"></div>
+					<div class="four">单价（元）</div>
+					<div class="five">数量</div>
+					<div class="six">小计（元）</div>
+					<div class="seven">操作</div>
+				</div>
+				<!--商品购物车列表-->
+				<div class="shop_lists">
+					<div class="shop_list">
+						<div class="item_list">
+							<div class="cell p_checkbox">
+								<input type="checkbox" name="" id="" value="" />
+							</div>
+							<div class="cell p_goods">
+								<div class="goods_item">
+									<div class="p_img">
+										<a href="">
+											<img src="images/shop/13.jpg"/>
+										</a>
+									</div>
+									<div class="item_msg">
+										<div class="p_name">
+											<a href="">荣耀8 4GB+32GB 全网通版  珠光白</a>
+										</div>
+										<div class="p_extend">
+											购买礼品包装
+										</div>
+									</div>
+								</div>
+								
+							</div>
+							<div class="cell p_props">
+								<div class="props_txt">颜色：珠光白</div>
+								<div class="props_txt">尺码：全网通(4GB 32GB)</div>
+							</div>
+							<div class="cell p_price">
+								<strong ng-model="price">2299.00</strong>
+								<!--<input type="hidden" ng-model="price" name="" id="" value="2299" />-->
+							</div>
+							<div class="quantity_form">
+								<div class="dd">
+									<div class="number">
+										<div class="add">
+											<a href="javascript:;" ng-click="del()" class="jian">-</a>
+											<input type="text" value="1" ng-model="num" name="" class="texts" id="" maxlength="3" />
+											<a href="javascript:;" class="jia" ng-click="add()">+</a>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="cell p_sum">
+								<strong>{{num}}</strong>
+							</div>
+							<div class="cell p_ops">
+								<a href="">删除</a>
+								<a href="">移到我的关注</a>
+							</div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="options_box">
+					<div class="select_all">
+						<input type="checkbox" class="che" name="" id="" value="" />
+						全选
+					</div>
+					<div class="operation">
+						<a href="">删除选中的商品</a>
+						<a href="">移到我的关注</a>
+						<a href="">清除下柜商品</a>
+					</div>
+					<div class="toolbar_right">
+						<div class="btn_area">
+							<a href="">去结算</a>
+						</div>
+						<div class="price_sum">
+							<span class="tex">总价（不含运费）：</span>
+							<span class="price sumPrice">
+								<em>¥0.00</em>
+							</span>
+						</div>
+						<div class="amount_sum">
+							已选择<em>0</em>件商品
+						</div>
+					</div>
+				</div>
+				
+			</div>
+			
+		</div>
+		<script type="text/javascript">
+			var app = angular.module('app', []);
+			app.controller('shop_num', function($scope) {
+				
+			    $scope.num= 1;
+//			            数字增加
+//				数据
+				$scope.comment = [
+					[
+						'荣耀8 4GB+32GB 全网通版  珠光白',
+						'购买李包装',
+						'珠光白',
+						'全网通(4GB 32GB)'
+					]
+				];
+			    $scope.add = function(){
+			    	$scope.num = $scope.num + 1;
+			    }
+//			            数字减少
+			    $scope.del = function(){
+			    	$scope.num = $scope.num - 1;
+//			    	判断小于1的时候
+			    	if($scope.num<1){
+			    		$scope.num = 1;
+			    	}
+			    }
+			});
+		</script>
+	</body>
+</html>
